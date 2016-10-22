@@ -31,6 +31,23 @@ public class Formatter {
 
             System.out.println(ex.getMessage());
         }
+        try(FileWriter writer = new FileWriter("CodePart.java", false))
+        {
+            for (int i=0; i<list.size(); i++)
+            {
+                for (int j=0; j<list.get(i).size(); j++)
+                {
+                    writer.write(list.get(i).get(j));
+                }
+
+            }
+
+            writer.flush();
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
         for (int i=0; i<list.size(); i++)
         {
             for (int j=0; j<list.get(i).size(); j++)
