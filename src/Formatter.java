@@ -15,6 +15,7 @@ public class Formatter {
                 line.add((char)c);
                 if (c=='\n') {
                     line = editor.editTab (line, rank);
+                    line = editor.editScol (line);
                     list.add(line);
                     line = new ArrayList<Character>();
                 }
@@ -47,14 +48,6 @@ public class Formatter {
         catch(IOException ex){
 
             System.out.println(ex.getMessage());
-        }
-        for (int i=0; i<list.size(); i++)
-        {
-            for (int j=0; j<list.get(i).size(); j++)
-            {
-                System.out.print(list.get(i).get(j));
-            }
-
         }
     }
 }

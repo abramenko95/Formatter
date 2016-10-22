@@ -4,9 +4,12 @@ import java.util.ArrayList;
  * Created by abramenko on 21.10.16.
  */
 public class Editor {
+    int rank;
+    //Edit tabulation
     public ArrayList<Character> editTab (ArrayList<Character> arraylist, int count)
     {
-        int rank=count, quant=0;
+        int  quant=0;
+        rank=count;
         ArrayList<Character> line = arraylist;
         for (int i=0; i<line.size(); i++) {
             if (line.get(i) == ' ') {
@@ -40,6 +43,38 @@ public class Editor {
             }
         }
 
+        return line;
+    }
+    //Edit semicolon
+    public ArrayList<Character> editScol (ArrayList<Character> arraylist)
+    {
+        ArrayList<Character> line = arraylist;
+        int count=0;
+        for (int i=0; i<line.size(); i++) {
+            switch (line.get(i)) {
+                case '(':
+                    count++;
+                    break;
+                case ')':
+                    count--;
+                    break;
+                case ';':
+                    if (count<=0 && i!=line.size()-2) {
+                        i++;
+                        while (line.get(i)==' ') {
+                            line.remove(i);
+                        }
+                        if (line.get(i)!=')') {
+                            line.add(i, '\n');
+                        }
+                        i++;
+                        for (int j=0; j<rank*4; j++) {
+                            line.add(i,' ');
+                        }
+                    }
+            }
+
+        }
         return line;
     }
 }
