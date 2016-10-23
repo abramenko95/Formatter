@@ -6,7 +6,14 @@ import java.lang.*;
 public class Formatter {
     public static void main (String[] Args) {
         ArrayList<ArrayList<Character>> list = new ArrayList<ArrayList<Character>>();
-        try(FileReader reader = new FileReader("CodePart.java"))
+        String file;
+        if (Args.length==1) {
+            file=Args[0];
+        }
+        else {
+            file="CodePart.java";
+        }
+        try(FileReader reader = new FileReader(file))
         {
             int c, rank=0;
             Editor editor = new Editor();
@@ -32,7 +39,7 @@ public class Formatter {
 
             System.out.println(ex.getMessage());
         }
-        try(FileWriter writer = new FileWriter("CodePart.java", false))
+        try(FileWriter writer = new FileWriter(file, false))
         {
             for (int i=0; i<list.size(); i++)
             {
